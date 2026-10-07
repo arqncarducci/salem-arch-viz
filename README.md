@@ -17,6 +17,7 @@ SALEM fusiona el rigor del cálculo digital con la calidez táctil de la arquite
   - **Hero**: Tipografía editorial con emblema adaptable (lateral en pantallas de escritorio, marca de agua en dispositivos móviles).
   - **Manifiesto & Oficio**: Filosofía sobre el cálculo exacto y el trazo sensible.
   - **Obras**: Muestrario de atmósferas y proyectos conceptuales.
+  - **Recorridos Inmersivos**: Gemelos digitales interactivos y panoramas 360° en tiempo real con Twinmotion Cloud (recorrido libre en PC y recorrido giroscópico/VR para móviles).
   - **Filosofía**: Enfoque sobre la luz como narrador y el tiempo capturado.
   - **Diálogo & Taller**: Formulario de contacto directo para estudios y arquitectos.
   - **Footer**: Emblema romboidal en bronce, créditos y enlaces de contacto.
