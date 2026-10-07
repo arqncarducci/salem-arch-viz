@@ -16,3 +16,6 @@ SALEM Arch&Viz es un taller de visualización arquitectónica y narrativa espaci
 2. **Hero Emblem**: `assets/salem-logo-nuevo-bronze.png` con comportamiento responsive (lateral en desktop $\ge$ 1024px, marca de agua en gris tenue por detrás del texto en resoluciones menores).
 3. **Footer**: Emblema `assets/salem-logo-nuevo-bronze.png` con altura balanceada (~110px).
 4. **Redes Sociales**: Mantener enlaces a Instagram, LinkedIn y Behance siempre con `target="_blank"` y `rel="noopener noreferrer"`.
+
+## Modo de Trabajo y Autonomía
+- **Auto Apply / Ejecución Directa**: Proceder siempre de forma directa y autónoma aplicando los cambios solicitados en los archivos del proyecto (HTML, CSS, assets, etc.) sin solicitar confirmaciones intermedias ni detenerse a esperar "OK" para cada acción, a menos que el usuario lo solicite expresamente.
