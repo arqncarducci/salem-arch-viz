@@ -338,17 +338,71 @@
     color: var(--cream); line-height:1.55; margin-bottom: 28px;
   }
   .about-figure{
-    position: relative; aspect-ratio: 4/5; border: 1px solid var(--line-strong);
+    position: relative;
+    width: 100%;
+    max-width: 390px;
+    justify-self: center;
+    aspect-ratio: 9/16;
+    border: 1px solid var(--line-strong);
     background:
       radial-gradient(ellipse 90% 70% at 30% 20%, rgba(169,121,63,0.16), transparent 60%),
       linear-gradient(160deg, #23201b 0%, #17140f 55%, #0d0c0a 100%);
     overflow:hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45);
   }
-  .about-figure svg{ position:absolute; inset:0; width:100%; height:100%; opacity:0.9; }
+  .about-figure video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .about-figure::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(180deg, rgba(11,10,9,0.25) 0%, transparent 22%, transparent 72%, rgba(11,10,9,0.82) 100%);
+    pointer-events:none;
+    z-index:1;
+  }
+  .about-sound-btn{
+    position:absolute;
+    top:14px;
+    right:14px;
+    z-index:3;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:6px 12px;
+    background: rgba(11,10,9,0.72);
+    border: 1px solid var(--line-strong);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: border-color .25s ease, color .25s ease, background .25s ease;
+  }
+  .about-sound-btn:hover{
+    border-color: var(--bronze-lt);
+    color: var(--bronze-lt);
+    background: rgba(11,10,9,0.9);
+  }
+  .about-sound-btn svg{
+    width:13px;
+    height:13px;
+    stroke: currentColor;
+  }
   .about-figure .caption{
-    position:absolute; left:20px; bottom:18px; right:20px;
+    position:absolute; left:20px; bottom:16px; right:20px;
+    z-index:2;
     font-size: 0.72rem; letter-spacing:0.1em; text-transform:uppercase;
-    color: var(--cream-faint); display:flex; justify-content:space-between;
+    color: var(--cream-dim); display:flex; justify-content:space-between;
+    gap: 12px;
+    pointer-events:none;
   }
 
   /* ============ PORTAFOLIO (OBRAS & ATMÓSFERAS) ============ */
@@ -910,7 +964,7 @@
   /* ============ RESPONSIVE ============ */
   @media (max-width: 900px){
     .about-grid, .phil-grid, .contact-grid{ grid-template-columns: 1fr; }
-    .about-figure{ order:-1; aspect-ratio: 16/10; }
+    .about-figure{ max-width: 340px; aspect-ratio: 9/16; margin: 0 auto; }
     .case-grid{ grid-template-columns: 1fr; }
   }
   @media (max-width: 720px){
@@ -992,30 +1046,16 @@
         <p>Trabajamos con las herramientas de renderizado más avanzadas del presente, pero pensamos con la sensibilidad de los viejos maestros. Somos un estudio de escala humana que privilegia el diálogo íntimo con cada despacho y autor: cada proyecto es una búsqueda estética compartida, no una línea de montaje.</p>
       </div>
       <div class="about-figure">
-        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="500" fill="none"/>
-          <g stroke="rgba(236,230,218,0.5)" stroke-width="0.6">
-            <line x1="40" y1="460" x2="360" y2="460"/>
-            <line x1="40" y1="460" x2="40" y2="120"/>
-            <line x1="360" y1="460" x2="360" y2="120"/>
-            <line x1="40" y1="120" x2="200" y2="40"/>
-            <line x1="360" y1="120" x2="200" y2="40"/>
-            <line x1="40" y1="120" x2="360" y2="120"/>
-            <line x1="90" y1="460" x2="90" y2="180"/>
-            <line x1="140" y1="460" x2="140" y2="200"/>
-            <line x1="200" y1="460" x2="200" y2="40"/>
-            <line x1="260" y1="460" x2="260" y2="200"/>
-            <line x1="310" y1="460" x2="310" y2="180"/>
-            <line x1="40" y1="380" x2="360" y2="380"/>
-            <line x1="40" y1="300" x2="360" y2="300"/>
-          </g>
-          <g stroke="rgba(169,121,63,0.55)" stroke-width="0.8">
-            <line x1="60" y1="460" x2="60" y2="300" stroke-dasharray="2 4"/>
-            <line x1="200" y1="40" x2="200" y2="10" stroke-dasharray="2 4"/>
-          </g>
-          <circle cx="200" cy="40" r="2" fill="rgba(201,154,95,0.85)"/>
-        </svg>
-        <div class="caption"><span>Sección axonométrica</span><span>Estudio sobre la luz y la sombra</span></div>
+        <video id="soleVideo" src="assets/presentacion-sole.mp4" poster="assets/presentacion-sole-poster.jpg" autoplay loop muted playsinline preload="metadata"></video>
+        <button type="button" class="about-sound-btn" id="soleSoundBtn" aria-label="Activar sonido">
+          <svg id="soleSoundIcon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+          <span id="soleSoundLabel">Activar sonido</span>
+        </button>
+        <div class="caption"><span>Edificio SOLE · Living – Suite</span><span>Estudio sobre la luz y la sombra</span></div>
       </div>
     </div>
   </section>
@@ -1552,6 +1592,37 @@
       });
     }
   });
+
+  // Video Presentación SOLE — Control de sonido y reproducción
+  const soleVideo = document.getElementById('soleVideo');
+  const soleSoundBtn = document.getElementById('soleSoundBtn');
+  const soleSoundLabel = document.getElementById('soleSoundLabel');
+  const soleSoundIcon = document.getElementById('soleSoundIcon');
+
+  if (soleVideo && soleSoundBtn) {
+    soleSoundBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      soleVideo.muted = !soleVideo.muted;
+      if (soleVideo.muted) {
+        soleSoundLabel.textContent = 'Activar sonido';
+        soleSoundBtn.setAttribute('aria-label', 'Activar sonido');
+        soleSoundIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line>';
+      } else {
+        soleSoundLabel.textContent = 'Silenciar';
+        soleSoundBtn.setAttribute('aria-label', 'Silenciar sonido');
+        soleSoundIcon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>';
+        if (soleVideo.paused) soleVideo.play();
+      }
+    });
+
+    soleVideo.addEventListener('click', () => {
+      if (soleVideo.paused) {
+        soleVideo.play();
+      } else {
+        soleVideo.pause();
+      }
+    });
+  }
 </script>
 
 </body>
