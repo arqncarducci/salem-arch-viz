@@ -582,55 +582,42 @@
     text-shadow: 0 2px 10px rgba(0,0,0,0.8);
   }
 
-  /* BOTÓN PARA PAUSAR / SALIR Y VOLVER AL ESTADO BLURREADO */
+  /* BOTÓN PARA PAUSAR / SALIR Y VOLVER AL ESTADO BLURREADO (EN COLUMNA DERECHA) */
   .tour-pause-btn{
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    z-index: 6;
     display: none;
     align-items: center;
     gap: 7px;
+    margin-left: auto;
     font-family: var(--body);
-    font-size: 0.76rem;
+    font-size: 0.72rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--cream);
-    background: rgba(11,10,9,0.88);
-    border: 1px solid var(--line-strong);
-    padding: 6px 12px;
+    color: var(--bronze-lt);
+    background: rgba(169,121,63,0.12);
+    border: 1px solid var(--bronze);
+    padding: 5px 11px;
     border-radius: 2px;
     cursor: pointer;
-    backdrop-filter: blur(8px);
     transition: background .3s ease, border-color .3s ease, color .3s ease;
   }
   .tour-card.is-active .tour-pause-btn{
     display: inline-flex;
   }
   .tour-pause-btn:hover{
-    background: var(--panel-2);
-    border-color: var(--bronze);
-    color: var(--bronze-lt);
+    background: var(--bronze-lt);
+    border-color: var(--bronze-lt);
+    color: var(--void);
   }
   .tour-pause-btn svg{
-    width: 12px;
-    height: 12px;
+    width: 11px;
+    height: 11px;
     stroke: currentColor;
   }
 
-  .tour-badge-row{
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    z-index: 5;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    pointer-events: none;
-  }
   .tour-inline-badges{
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 8px;
     margin-bottom: 16px;
   }
@@ -1261,7 +1248,7 @@
               <span class="tour-mode-tag">Exploración en Primera Persona &amp; Modulación de Materiales</span>
             </div>
             <p class="tour-desc">
-              Un gemelo digital en tiempo real donde podés desplazarte libremente por todo el proyecto. Incluye interacción directa con los elementos del espacio: probá encender o apagar la luz tocando el interruptor de la cocina, accionar las manijas de las puertas o salidas al balcón, y alternar entre distintos acabados de pisos. Este recorrido <strong>se puede visualizar de manera online en la página oficial de Twinmotion</strong>, o bien <strong>generarse como una APP independiente para llevar y visualizar sin conexión</strong> en cualquier presentación.
+              Un gemelo digital en tiempo real donde podés desplazarte libremente por todo el proyecto. Incluye interacción directa con los elementos del espacio: probá encender o apagar la luz tocando el interruptor de la cocina y alternar entre distintos acabados de pisos. Este recorrido <strong>se puede visualizar de manera online en la página oficial de Twinmotion</strong>, o bien <strong>generarse como una APP independiente para llevar y visualizar sin conexión</strong> en cualquier presentación.
             </p>
             <div class="tour-specs">
               <div class="spec-item">
@@ -1283,17 +1270,6 @@
         <!-- MODELO 2: PANORAMA 360° & VR (TWINMOTION CLOUD PANORAMA) -->
         <article class="tour-card" id="tourModel2">
           <div class="tour-media-frame">
-            <div class="tour-badge-row">
-              <span class="tour-pill pill-patina">360° Nodal &amp; VR Ready</span>
-              <span class="tour-pill pill-neutral">Giroscopio Móvil · VR Ready</span>
-            </div>
-
-            <!-- Botón flotante para pausar cuando está activo -->
-            <button class="tour-pause-btn" type="button" aria-label="Pausar panorama 360">
-              <span>Pausar</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-            </button>
-
             <!-- Pantalla inicial blurreada -->
             <div class="tour-cover" role="button" tabindex="0" aria-label="Iniciar Panorama Espacial 360 y VR">
               <div class="tour-cover-bg" style="background-image: url('assets/tour-panorama-thumb.jpg');"></div>
@@ -1317,6 +1293,14 @@
             </iframe>
           </div>
           <div class="tour-info">
+            <div class="tour-inline-badges">
+              <span class="tour-pill pill-patina">360° Nodal &amp; VR Ready</span>
+              <span class="tour-pill pill-neutral">Giroscopio Móvil · VR Ready</span>
+              <button class="tour-pause-btn" type="button" aria-label="Pausar panorama 360">
+                <span>Pausar</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              </button>
+            </div>
             <div class="tour-header">
               <h3>Panorama Espacial 360° &amp; VR</h3>
               <span class="tour-mode-tag">Navegación Nodal Giroscópica &amp; Realidad Virtual</span>
@@ -1535,6 +1519,9 @@
         iframe.src = iframe.dataset.src;
       }
       card.classList.add('is-active');
+      if (startCta) {
+        startCta.innerHTML = '<span>Pausar Panorama</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+      }
     }
 
     function deactivateCard(targetCard) {
@@ -1543,6 +1530,10 @@
       if (targetIframe) {
         // Liberar sesión de WebRTC/WebGL y memoria
         targetIframe.src = '';
+      }
+      const targetCta = targetCard.querySelector('button.tour-start-cta');
+      if (targetCta) {
+        targetCta.innerHTML = '<span>Iniciar Panorama</span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>';
       }
     }
 
