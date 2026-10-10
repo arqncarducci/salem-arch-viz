@@ -358,14 +358,6 @@
     object-fit:cover;
     display:block;
   }
-  .about-figure::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background: linear-gradient(180deg, rgba(11,10,9,0.25) 0%, transparent 22%, transparent 72%, rgba(11,10,9,0.82) 100%);
-    pointer-events:none;
-    z-index:1;
-  }
   .about-sound-btn{
     position:absolute;
     top:14px;
@@ -395,14 +387,6 @@
     width:13px;
     height:13px;
     stroke: currentColor;
-  }
-  .about-figure .caption{
-    position:absolute; left:20px; bottom:16px; right:20px;
-    z-index:2;
-    font-size: 0.72rem; letter-spacing:0.1em; text-transform:uppercase;
-    color: var(--cream-dim); display:flex; justify-content:space-between;
-    gap: 12px;
-    pointer-events:none;
   }
 
   /* ============ PORTAFOLIO (OBRAS & ATMÓSFERAS) ============ */
@@ -474,10 +458,14 @@
     border-radius: 4px;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 1.34fr 0.86fr;
-    gap: clamp(24px, 3.5vw, 44px);
+    grid-template-columns: 1.32fr 0.88fr;
+    align-items: stretch;
+    gap: 0;
     transition: border-color .35s ease, box-shadow .35s ease;
     position: relative;
+  }
+  .tour-card.tour-card--text-only{
+    grid-template-columns: 1fr;
   }
   .tour-card:hover{
     border-color: var(--line-strong);
@@ -486,12 +474,14 @@
   .tour-media-frame{
     position: relative;
     width: 100%;
-    aspect-ratio: 16/10;
-    min-height: 430px;
+    height: 100%;
+    min-height: 460px;
     background: #000;
     overflow: hidden;
   }
   .tour-media-frame iframe{
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     border: 0;
@@ -638,6 +628,12 @@
     gap: 8px;
     pointer-events: none;
   }
+  .tour-inline-badges{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
   .tour-pill{
     font-size: 0.72rem;
     letter-spacing: 0.08em;
@@ -661,11 +657,14 @@
     border: 1px solid var(--line);
   }
   .tour-info{
-    padding: clamp(24px, 3.5vw, 40px);
-    padding-left: 0;
+    padding: clamp(28px, 3.5vw, 42px);
+    border-left: 1px solid var(--line);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+  }
+  .tour-card--text-only .tour-info{
+    border-left: none;
   }
   .tour-header{
     margin-bottom: 14px;
@@ -690,6 +689,9 @@
     line-height: 1.7;
     margin-bottom: 20px;
   }
+  .tour-card--text-only .tour-desc{
+    max-width: 88ch;
+  }
   .tour-specs{
     display: flex;
     flex-direction: column;
@@ -699,6 +701,11 @@
     background: var(--panel-2);
     border-left: 2px solid var(--bronze);
     border-radius: 0 2px 2px 0;
+  }
+  .tour-card--text-only .tour-specs{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px 32px;
   }
   .spec-item{
     font-size: 0.85rem;
@@ -733,6 +740,7 @@
     padding: 11px 22px;
     border-radius: 2px;
     cursor: pointer;
+    text-decoration: none;
     transition: background .3s ease, transform .3s ease;
   }
   .tour-start-cta:hover{
@@ -780,9 +788,12 @@
     .tour-card{
       grid-template-columns: 1.32fr 0.88fr;
     }
+    .tour-card.tour-card--text-only{
+      grid-template-columns: 1fr;
+    }
     .tour-media-frame{
-      aspect-ratio: 16/10;
-      min-height: 440px;
+      height: 100%;
+      min-height: 100%;
     }
   }
 
@@ -793,10 +804,14 @@
     }
     .tour-info{
       padding: clamp(22px, 4vw, 36px);
-      padding-top: 0;
+      border-left: none;
+      border-top: 1px solid var(--line);
+    }
+    .tour-card--text-only .tour-info{
+      border-top: none;
     }
     .tour-media-frame{
-      /* En pantallas medianas y móviles, adaptamos la viñeta para dar mayor altura y comodidad */
+      height: auto;
       aspect-ratio: 4/3;
       min-height: 380px;
     }
@@ -805,7 +820,6 @@
   /* En Celulares pequeños (max-width: 580px) */
   @media (max-width: 580px){
     .tour-media-frame{
-      /* Formato cuadrado inmersivo en celulares angostos para touch y giroscopio */
       aspect-ratio: 1/1;
       min-height: 330px;
       max-height: 72vh;
@@ -1055,7 +1069,6 @@
           </svg>
           <span id="soleSoundLabel">Activar sonido</span>
         </button>
-        <div class="caption"><span>Edificio SOLE · Living – Suite</span><span>Estudio sobre la luz y la sombra</span></div>
       </div>
     </div>
   </section>
@@ -1236,65 +1249,32 @@
       <div class="tours-grid">
 
         <!-- MODELO 1: RECORRIDO INTERACTIVO LIBRE (TWINMOTION CLOUD PRESENTATION) -->
-        <article class="tour-card" id="tourModel1">
-          <div class="tour-media-frame">
-            <div class="tour-badge-row">
+        <article class="tour-card tour-card--text-only" id="tourModel1">
+          <div class="tour-info">
+            <div class="tour-inline-badges">
               <span class="tour-pill pill-gold">Tiempo Real · Twinmotion Cloud</span>
               <span class="tour-pill pill-neutral">Recomendado PC / Exposiciones</span>
+              <span class="tour-pill pill-neutral">Online o App Sin Conexión</span>
             </div>
-
-            <!-- Botón flotante para pausar cuando está activo -->
-            <button class="tour-pause-btn" type="button" aria-label="Pausar recorrido interactivo">
-              <span>Pausar</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-            </button>
-
-            <!-- Pantalla inicial blurreada -->
-            <div class="tour-cover" role="button" tabindex="0" aria-label="Iniciar Recorrido Interactivo Libre">
-              <div class="tour-cover-bg" style="background-image: url('assets/tour-presentation-thumb.jpg');"></div>
-              <div class="tour-cover-overlay"></div>
-              <div class="tour-cover-content">
-                <div class="tour-play-circle">
-                  <svg viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>
-                </div>
-                <h4 class="tour-cover-title">Explorar en Tiempo Real</h4>
-                <p class="tour-cover-sub">Clic para conectar y cargar el gemelo digital</p>
-              </div>
-            </div>
-
-            <!-- Iframe (carga diferida bajo demanda con ?embed) -->
-            <iframe 
-              class="tour-iframe"
-              data-src="https://twinmotion.unrealengine.com/presentation/iU_u44_uTgEg-x9H?embed" 
-              title="SALEM — Recorrido Interactivo en Tiempo Real"
-              allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; magnetometer; picture-in-picture; web-share; execution-while-out-of-viewport; execution-while-not-rendered; xr-spatial-tracking" 
-              allowfullscreen>
-            </iframe>
-          </div>
-          <div class="tour-info">
             <div class="tour-header">
               <h3>Recorrido Interactivo Libre</h3>
               <span class="tour-mode-tag">Exploración en Primera Persona &amp; Modulación de Materiales</span>
             </div>
             <p class="tour-desc">
-              Un gemelo digital en tiempo real donde podés desplazarte libremente por todo el proyecto. Incluye interacción directa con los elementos del espacio: probá encender o apagar la luz tocando el interruptor de la cocina, accionar las manijas de las puertas o salidas al balcón, y alternar entre distintos acabados de pisos.
+              Un gemelo digital en tiempo real donde podés desplazarte libremente por todo el proyecto. Incluye interacción directa con los elementos del espacio: probá encender o apagar la luz tocando el interruptor de la cocina, accionar las manijas de las puertas o salidas al balcón, y alternar entre distintos acabados de pisos. Este recorrido <strong>se puede visualizar de manera online en la página oficial de Twinmotion</strong>, o bien <strong>generarse como una APP independiente para llevar y visualizar sin conexión</strong> en cualquier presentación.
             </p>
             <div class="tour-specs">
               <div class="spec-item">
                 <strong>Características:</strong> Caminata libre en primera persona, modulación de materiales e interactividad de iluminación en vivo.
               </div>
               <div class="spec-item">
-                <strong>Rendimiento &amp; Dispositivo:</strong> Modelo de cálculo gráfico en tiempo real de alta fidelidad. Se recomienda utilizar en <strong>computadora (PC o laptop)</strong> para exposiciones o presentaciones profesionales. <em>(No compatible con VR)</em>.
+                <strong>Modalidad &amp; Dispositivo:</strong> Visualización <strong>online en la página oficial</strong> o entrega en formato <strong>APP ejecutable para usar sin conexión (offline)</strong>. Se recomienda utilizar en <strong>computadora (PC o laptop)</strong> para exposiciones o presentaciones profesionales. <em>(No compatible con VR)</em>.
               </div>
             </div>
             <div class="tour-actions">
-              <button class="tour-start-cta" type="button">
-                <span>Iniciar Recorrido</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
-              </button>
-              <a href="https://twinmotion.unrealengine.com/presentation/iU_u44_uTgEg-x9H" target="_blank" rel="noopener noreferrer" class="tour-link-btn">
-                <span>Pantalla completa</span>
-                <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg>
+              <a href="https://twinmotion.unrealengine.com/presentation/iU_u44_uTgEg-x9H" target="_blank" rel="noopener noreferrer" class="tour-start-cta">
+                <span>Abrir Recorrido en Twinmotion</span>
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6"/></svg>
               </a>
             </div>
           </div>
@@ -1537,7 +1517,8 @@
     const cover = card.querySelector('.tour-cover');
     const iframe = card.querySelector('iframe.tour-iframe');
     const pauseBtn = card.querySelector('.tour-pause-btn');
-    const startCta = card.querySelector('.tour-start-cta');
+    const startCta = card.querySelector('button.tour-start-cta');
+    if (!iframe) return;
 
     function activateCard() {
       if (card.classList.contains('is-active')) return;
