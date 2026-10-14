@@ -416,6 +416,8 @@
     text-align: center;
     min-height: 220px;
     position: relative;
+    text-decoration: none;
+    color: inherit;
     transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .35s ease, background-color .35s ease, box-shadow .4s ease;
   }
   .client-card:hover{
@@ -423,6 +425,9 @@
     border-color: var(--line-strong);
     background: #0f0e0c;
     box-shadow: 0 20px 48px rgba(0,0,0,0.45);
+  }
+  .client-card:hover .client-name{
+    color: var(--bronze-lt);
   }
   .client-logo-wrap{
     height: 76px;
@@ -1250,7 +1255,25 @@
       </div>
 
       <div class="clients-grid">
-        <!-- CLIENTE 1: CIMA PATAGONIA -->
+        <!-- CLIENTE 1: LATTUCA -->
+        <a class="client-card" href="https://lattuca.com.ar/" target="_blank" rel="noopener noreferrer" aria-label="Visitar sitio de Lattuca Propiedades &amp; Inversiones">
+          <div class="client-logo-wrap">
+            <img src="assets/logo-lattuca-light.png" alt="Lattuca — Propiedades &amp; Inversiones">
+          </div>
+          <h3 class="client-name">Lattuca</h3>
+          <p class="client-role">Desarrollos Inmobiliarios, Arquitectura &amp; Inversiones</p>
+        </a>
+
+        <!-- CLIENTE 2: EISI S.A. -->
+        <a class="client-card" href="https://eisisa.com/" target="_blank" rel="noopener noreferrer" aria-label="Visitar sitio de EISI S.A.">
+          <div class="client-logo-wrap">
+            <img src="assets/logo-eisi-light.png" alt="EISI S.A. — Ingeniería, Servicios y Construcciones">
+          </div>
+          <h3 class="client-name">EISI S.A.</h3>
+          <p class="client-role">Ingeniería, Servicios &amp; Montajes Industriales</p>
+        </a>
+
+        <!-- CLIENTE 3: CIMA PATAGONIA -->
         <div class="client-card">
           <div class="client-logo-wrap">
             <img src="assets/logo-cima-light.png" alt="CIMA Patagonia — Cámara Industrial y de Comercio Exterior de Puerto Madryn">
@@ -1259,7 +1282,7 @@
           <p class="client-role">Cámara Industrial y de Comercio Exterior de Puerto Madryn y Región Patagonia</p>
         </div>
 
-        <!-- CLIENTE 2: DYSCON EMPRESA CONSTRUCTORA -->
+        <!-- CLIENTE 4: DYSCON EMPRESA CONSTRUCTORA -->
         <div class="client-card">
           <div class="client-logo-wrap">
             <img src="assets/logo-dyscon-light.png" alt="DyScon S.A. Empresa Constructora">
@@ -1268,24 +1291,23 @@
           <p class="client-role">Empresa Constructora de Infraestructura &amp; Arquitectura</p>
         </div>
 
-        <!-- TARJETA MODULAR: ESPACIO PARA SUMAR MÁS CLIENTES / ALIANZAS -->
-        <!-- NOTA: Para agregar otro cliente con su logo, duplicá un bloque .client-card, colocá el logo en assets/ y personalizá el nombre y rol -->
-        <div class="client-card client-card--invite">
+        <!-- CLIENTE 5: FABRI S.A. -->
+        <div class="client-card">
           <div class="client-logo-wrap">
-            <div class="client-invite-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
-            </div>
+            <img src="assets/logo-fabri-light.png" alt="Fabri S.A. — Ingeniería, Construcciones y Montajes Industriales">
           </div>
-          <h3 class="client-name">Tu Estudio o Proyecto</h3>
-          <p class="client-role">Sumá tu visión a las colaboraciones y desarrollos de SALEM</p>
-          <a href="#contacto" class="client-invite-cta">
-            <span>Iniciar conversación</span>
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
-          </a>
+          <h3 class="client-name">Fabri S.A.</h3>
+          <p class="client-role">Ingeniería, Construcciones &amp; Montajes Industriales</p>
         </div>
+
+        <!-- CLIENTE 6: 200 GRADOS -->
+        <a class="client-card" href="https://www.instagram.com/200gradosok/" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil de 200 Grados en Instagram">
+          <div class="client-logo-wrap">
+            <img src="assets/logo-200grados-light.png" alt="200 Grados — Comunicación y Producción de Eventos">
+          </div>
+          <h3 class="client-name">200 Grados</h3>
+          <p class="client-role">Comunicación Estratégica &amp; Producción de Eventos</p>
+        </a>
       </div>
     </div>
   </section>
