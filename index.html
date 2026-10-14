@@ -389,6 +389,122 @@
     stroke: currentColor;
   }
 
+  /* ============ CLIENTES & CONFIANZA ============ */
+  .clients{
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(64px, 8vw, 104px) 0;
+    position: relative;
+  }
+  .clients-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: clamp(20px, 3vw, 32px);
+    align-items: stretch;
+    margin-top: clamp(32px, 4.5vw, 52px);
+  }
+  .client-card{
+    background: var(--void);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: clamp(32px, 4vw, 44px) clamp(24px, 3vw, 32px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 220px;
+    position: relative;
+    transition: transform .4s cubic-bezier(.2,.7,.2,1), border-color .35s ease, background-color .35s ease, box-shadow .4s ease;
+  }
+  .client-card:hover{
+    transform: translateY(-4px);
+    border-color: var(--line-strong);
+    background: #0f0e0c;
+    box-shadow: 0 20px 48px rgba(0,0,0,0.45);
+  }
+  .client-logo-wrap{
+    height: 76px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .client-logo-wrap img{
+    max-height: 62px;
+    max-width: 85%;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.9;
+    filter: drop-shadow(0 2px 14px rgba(0,0,0,0.3));
+    transition: opacity .35s ease, transform .35s ease;
+  }
+  .client-card:hover .client-logo-wrap img{
+    opacity: 1;
+    transform: scale(1.03);
+  }
+  .client-name{
+    font-family: var(--display);
+    font-size: 1.28rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin: 0 0 6px;
+    letter-spacing: 0.02em;
+  }
+  .client-role{
+    font-family: var(--body);
+    font-size: 0.84rem;
+    color: var(--cream-dim);
+    margin: 0;
+    line-height: 1.5;
+    max-width: 320px;
+  }
+  .client-card--invite{
+    border-style: dashed;
+    border-color: rgba(236,230,218,0.14);
+    background: rgba(20,18,16,0.35);
+  }
+  .client-card--invite:hover{
+    border-color: var(--bronze-lt);
+    border-style: solid;
+  }
+  .client-invite-icon{
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bronze-lt);
+    background: rgba(169,121,63,0.06);
+    transition: transform .35s ease, border-color .35s ease, background-color .35s ease;
+  }
+  .client-card--invite:hover .client-invite-icon{
+    transform: scale(1.08);
+    border-color: var(--bronze);
+    background: rgba(169,121,63,0.12);
+  }
+  .client-invite-cta{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    font-family: var(--body);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--bronze-lt);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s ease, color .3s ease;
+  }
+  .client-invite-cta:hover{
+    color: var(--cream);
+    border-bottom-color: var(--bronze-lt);
+  }
+
   /* ============ PORTAFOLIO (OBRAS & ATMÓSFERAS) ============ */
   .portfolio{ background: var(--void); }
   .case-grid{
@@ -1066,6 +1182,7 @@
     </a>
     <nav class="links" aria-label="Navegación principal">
       <a href="#sobre">Manifiesto</a>
+      <a href="#clientes">Clientes</a>
       <a href="#portafolio">Obras</a>
       <a href="#recorridos">Recorridos</a>
       <a href="#filosofia">Filosofía</a>
@@ -1084,7 +1201,7 @@
       <div class="hero-content">
         <p class="hero-eyebrow">SALEM Arch&amp;Viz — Taller de visualización &amp; narrativa espacial</p>
         <h1>SALEM.<br>Donde la técnica de hoy evoca el <em>alma del oficio</em>.</h1>
-        <p class="hero-sub">Traducimos planos e intenciones en imágenes que ya respiran. Una fusión entre el rigor del cálculo digital y la calidez táctil de la arquitectura con historia.</p>
+        <p class="hero-sub">Traducimos planos e ideas en imágenes habitadas por la luz y el tiempo, uniendo el rigor del modelado contemporáneo con la sensibilidad táctil de la arquitectura con historia.</p>
         <blockquote class="hero-quote">
           &ldquo;Los sueños llevan implícitos la voluntad de ser y el deseo de expresar esa voluntad.&rdquo;
           <cite>— Louis I. Kahn</cite>
@@ -1103,9 +1220,9 @@
       <div class="about-text">
         <p class="eyebrow">Manifiesto &amp; Oficio</p>
         <h2 style="margin:14px 0 26px;">El cálculo exacto.<br>La nostalgia del trazo.</h2>
-        <p class="lead">No producimos imágenes de catálogo: revelamos la atmósfera de un lugar antes de que la primera piedra sea colocada.</p>
-        <p>En una época saturada de imágenes hiperreales pero estériles, en SALEM elegimos mirar más despacio. Observamos un plano con la misma devoción con la que un restaurador estudia una madera antigua: buscando la trayectoria del sol a media tarde, la imperfección honesta de un muro revocado a mano, el silencio que habita entre dos columnas.</p>
-        <p>Trabajamos con las herramientas de renderizado más avanzadas del presente, pero pensamos con la sensibilidad de los viejos maestros. Somos un estudio de escala humana que privilegia el diálogo íntimo con cada despacho y autor: cada proyecto es una búsqueda estética compartida, no una línea de montaje.</p>
+        <p class="lead">Damos forma a la atmósfera viva de cada proyecto, revelando su escala, su luz y su carácter antes de que comience su construcción.</p>
+        <p>Elegimos mirar la arquitectura con tiempo y detenimiento. En cada plano buscamos la trayectoria natural del sol, la textura viva de los materiales, el encuentro honesto entre superficies y los silencios que dan equilibrio al espacio.</p>
+        <p>Combinamos tecnología de renderizado contemporánea con la paciencia del oficio artesanal. Como taller de escala cercana, cultivamos un diálogo continuo con cada estudio y proyectista, entendiendo cada encargo como una exploración arquitectónica propia y compartida.</p>
       </div>
       <div class="about-figure">
         <video id="soleVideo" src="assets/presentacion-sole.mp4" poster="assets/presentacion-sole-poster.jpg" autoplay loop muted playsinline preload="metadata"></video>
@@ -1117,6 +1234,58 @@
           </svg>
           <span id="soleSoundLabel">Activar sonido</span>
         </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CLIENTES & CONFIANZA ============ -->
+  <section class="clients" id="clientes">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Confianza &amp; Trayectoria</p>
+          <h2 style="margin-top:14px;">Quienes confían en SALEM</h2>
+        </div>
+        <p class="lede">Colaboramos con estudios de arquitectura, desarrolladoras, constructoras e instituciones productivas para proyectar y comunicar sus espacios con rigor y sensibilidad.</p>
+      </div>
+
+      <div class="clients-grid">
+        <!-- CLIENTE 1: CIMA PATAGONIA -->
+        <div class="client-card">
+          <div class="client-logo-wrap">
+            <img src="assets/logo-cima-light.png" alt="CIMA Patagonia — Cámara Industrial y de Comercio Exterior de Puerto Madryn">
+          </div>
+          <h3 class="client-name">CIMA Patagonia</h3>
+          <p class="client-role">Cámara Industrial y de Comercio Exterior de Puerto Madryn y Región Patagonia</p>
+        </div>
+
+        <!-- CLIENTE 2: DYSCON EMPRESA CONSTRUCTORA -->
+        <div class="client-card">
+          <div class="client-logo-wrap">
+            <img src="assets/logo-dyscon-light.png" alt="DyScon S.A. Empresa Constructora">
+          </div>
+          <h3 class="client-name">DyScon S.A.</h3>
+          <p class="client-role">Empresa Constructora de Infraestructura &amp; Arquitectura</p>
+        </div>
+
+        <!-- TARJETA MODULAR: ESPACIO PARA SUMAR MÁS CLIENTES / ALIANZAS -->
+        <!-- NOTA: Para agregar otro cliente con su logo, duplicá un bloque .client-card, colocá el logo en assets/ y personalizá el nombre y rol -->
+        <div class="client-card client-card--invite">
+          <div class="client-logo-wrap">
+            <div class="client-invite-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </div>
+          </div>
+          <h3 class="client-name">Tu Estudio o Proyecto</h3>
+          <p class="client-role">Sumá tu visión a las colaboraciones y desarrollos de SALEM</p>
+          <a href="#contacto" class="client-invite-cta">
+            <span>Iniciar conversación</span>
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -1156,7 +1325,7 @@
               <h3>CIMA Patagonia</h3>
               <span class="tour-mode-tag" style="margin-bottom: 16px;">Ampliación del Taller de Capacitación en Oficios · Cámara Industrial de Puerto Madryn</span>
               <p>Presentación audiovisual creada para la Cámara Industrial y de Comercio Exterior de Puerto Madryn y Región Patagonia (CIMA / CENTEC), proyectando la ampliación de su taller de capacitación en oficios. La pieza recorre la evolución de la obra desde su implantación en el territorio y el montaje de su estructura metálica, hasta la consolidación de sus naves de aprendizaje técnico.</p>
-              <p>Más que exhibir una ampliación edilicia, la narrativa visual propone experimentar en tiempo presente la escala industrial del espacio, la claridad de su luz interior y el pulso cotidiano de un centro pensado para forjar el oficio y la industria regional antes de su construcción.</p>
+              <p>La narrativa visual recorre en tiempo presente la escala industrial del conjunto, la claridad de su iluminación natural y el pulso cotidiano de un centro concebido para la formación técnica y el desarrollo productivo de la región.</p>
             </div>
             <div class="case-meta">
               <span>Presentación Audiovisual · Formación Técnica &amp; Oficios</span>
@@ -1178,7 +1347,7 @@
           <h2 style="margin-top:14px;">Recorridos Inmersivos</h2>
         </div>
         <p class="section-sub">
-          No solo mostramos la arquitectura: permitimos habitarla e interactuar con ella. Dos modalidades tecnológicas desarrolladas para responder a distintas necesidades de presentación y dispositivos.
+          Experiencias interactivas concebidas para habitar, recorrer y sentir los espacios en tiempo real, adaptadas a distintas instancias de presentación y dispositivos.
         </p>
       </div>
 
@@ -1291,27 +1460,27 @@
       <div class="phil-text">
         <p class="eyebrow">Alquimia &amp; Método</p>
         <h2 style="margin:14px 0 22px;">Tecnología de vanguardia,<br>mirada de autor.</h2>
-        <p class="lead">El software calcula fotones; nosotros decidimos qué emoción despierta esa sombra en quien la contempla.</p>
+        <p class="lead">La técnica adquiere sentido cuando traduce la sensibilidad de una idea espacial: el peso de una sombra, la temperatura del aire y la emoción de quien la contempla.</p>
         <ul class="phil-list">
           <li>
             <span class="num">I.</span>
             <div>
               <h4>Malla e intención (La geometría viva)</h4>
-              <p>No levantamos volúmenes automáticos. Modelamos respetando la lógica constructiva real: el espesor de la carpintería, el encuentro honesto entre dos materiales y el peso que sostiene cada línea.</p>
+              <p>Modelamos desde la lógica constructiva y el detalle arquitectónico. Cuidamos el espesor real de las carpinterías, la transición honesta entre materiales y el equilibrio estructural que define cada línea.</p>
             </div>
           </li>
           <li>
             <span class="num">II.</span>
             <div>
               <h4>Materia con memoria (La belleza de lo imperfecto)</h4>
-              <p>Rechazamos el plástico y la pulcritud artificial. Nuestras texturas tienen gravedad e historia: el poro del travertino, el desgaste sutil del cuero, la veta noble del roble y el paso del aire sobre el hormigón.</p>
+              <p>Buscamos la presencia táctil de los materiales nobles, interpretando el poro natural de la piedra, el veteado de la madera y las marcas sutiles que la luz y el tiempo dejan sobre las superficies.</p>
             </div>
           </li>
           <li>
             <span class="num">III.</span>
             <div>
               <h4>Luz como narrador (El tiempo capturado)</h4>
-              <p>Estudiamos la orientación geográfica y la climatología real del sitio. No iluminamos un render: esperamos la hora exacta del día en que el espacio revela su vocación más íntima.</p>
+              <p>Estudiamos la orientación solar y el entorno climático del proyecto, capturando los momentos del día en que la luz modela el espacio con mayor serenidad y elocuencia.</p>
             </div>
           </li>
         </ul>
@@ -1325,7 +1494,7 @@
       <div class="contact-copy">
         <p class="eyebrow">Diálogo &amp; Taller</p>
         <h2 style="margin-top:14px;">Conversemos sobre<br>lo que aún no existe.</h2>
-        <p class="lead">Todo gran espacio nace de una conversación sincera. Hablemos de intenciones, recuerdos y luz, antes de hablar de plazos.</p>
+        <p class="lead">Cada proyecto comienza con un diálogo cercano sobre intenciones espaciales, materialidad y luz, profundizando en la esencia de la arquitectura a proyectar.</p>
         <ul class="services">
           <li><span>Visualización Arquitectónica de Autor</span><span class="n">Atmósferas con densidad narrativa</span></li>
           <li><span>Poética Espacial en Movimiento</span><span class="n">Cinemáticas al compás de la luz</span></li>
