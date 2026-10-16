@@ -1023,17 +1023,31 @@
     display:grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px);
   }
   .contact-copy h2{ font-size: clamp(2.4rem, 5vw, 4rem); line-height:1.05; }
-  .contact-copy .lead{
-    font-family: var(--body); font-style:italic; font-size: 1.28rem; color: var(--bronze-lt);
-    margin: 22px 0 30px; line-height: 1.5;
+  .contact-quote{
+    margin: 22px 0 30px;
+    font-family: var(--body); font-style: italic;
+    font-size: 1.08rem; color: var(--bronze-lt);
+    border-left: 2px solid var(--bronze);
+    padding-left: 20px;
+    max-width: 520px;
+    line-height: 1.55;
+  }
+  .contact-quote cite{
+    display: block; font-style: normal; font-size: 0.8rem;
+    color: var(--cream-faint); margin-top: 10px;
+    letter-spacing: 0.1em; text-transform: uppercase;
   }
   .services{ list-style:none; margin: 0; padding:0; display:grid; gap: 0; }
   .services li{
-    padding: 16px 0; border-bottom: 1px solid var(--line);
+    padding: 13px 0; border-bottom: 1px solid var(--line);
     display:flex; justify-content:space-between; align-items:baseline;
     color: var(--cream-dim); font-size: 0.98rem;
+    transition: color .3s ease;
   }
-  .services li span.n{ color: var(--cream-faint); font-size:0.78rem; letter-spacing:0.08em; }
+  .services li:hover{
+    color: var(--cream);
+  }
+  .services li span.n{ color: var(--cream-faint); font-size:0.78rem; letter-spacing:0.08em; font-family: var(--display); }
 
   form.contact-form{ display:grid; gap: 18px; }
   .field{ display:grid; gap:8px; }
@@ -1187,10 +1201,7 @@
         <p class="hero-eyebrow">SALEM Arch&amp;Viz — Taller de visualización &amp; narrativa espacial</p>
         <h1>SALEM.<br>Donde la técnica de hoy evoca el <em>alma del oficio</em>.</h1>
         <p class="hero-sub">Traducimos planos e ideas en imágenes habitadas por la luz y el tiempo, uniendo el rigor del modelado contemporáneo con la sensibilidad táctil de la arquitectura con historia.</p>
-        <blockquote class="hero-quote">
-          &ldquo;Los sueños llevan implícitos la voluntad de ser y el deseo de expresar esa voluntad.&rdquo;
-          <cite>— Louis I. Kahn</cite>
-        </blockquote>
+
       </div>
       <div class="hero-emblem-wrap">
         <img class="hero-emblem" src="assets/salem-logo-nuevo-bronze.png" alt="SALEM Architecture &amp; Visualization">
@@ -1226,8 +1237,7 @@
   <!-- ============ CLIENTES & CONFIANZA ============ -->
   <section class="clients" id="clientes">
     <div class="clients-head">
-      <p class="eyebrow">Confianza &amp; Trayectoria</p>
-      <h2>Empresas, estudios e instituciones que confían en SALEM</h2>
+      <h2>Confianza &amp; Trayectoria</h2>
     </div>
 
     <div class="clients-marquee">
@@ -1297,9 +1307,8 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">Obras &amp; Atmósferas</p>
-          <h2>La Galería de Experiencias</h2>
+          <h2>Galería de Experiencias</h2>
         </div>
-        <p class="lede">Proyectos y experiencias concebidas para habitar y sentir de forma viva cada espacio antes de su ejecución.</p>
       </div>
 
       <div class="case-grid">
@@ -1495,12 +1504,18 @@
       <div class="contact-copy">
         <p class="eyebrow">Diálogo &amp; Taller</p>
         <h2 style="margin-top:14px;">Conversemos sobre<br>lo que aún no existe.</h2>
-        <p class="lead">Cada proyecto comienza con un diálogo cercano sobre intenciones espaciales, materialidad y luz, profundizando en la esencia de la arquitectura a proyectar.</p>
+        <blockquote class="contact-quote">
+          &ldquo;Los sueños llevan implícitos la voluntad de ser y el deseo de expresar esa voluntad.&rdquo;
+          <cite>— Louis I. Kahn</cite>
+        </blockquote>
         <ul class="services">
-          <li><span>Visualización Arquitectónica de Autor</span><span class="n">Atmósferas con densidad narrativa</span></li>
-          <li><span>Poética Espacial en Movimiento</span><span class="n">Cinemáticas al compás de la luz</span></li>
-          <li><span>Dirección de Arte &amp; Consultoría</span><span class="n">Acompañamiento para concursos</span></li>
-          <li><span>Ensayos de Luz &amp; Materialidad</span><span class="n">Estudios de sitio y anteproyecto</span></li>
+          <li><span>Cinemáticas</span><span class="n">01</span></li>
+          <li><span>Showrooms interactivos</span><span class="n">02</span></li>
+          <li><span>Recorridos virtuales</span><span class="n">03</span></li>
+          <li><span>VR (Realidad Virtual)</span><span class="n">04</span></li>
+          <li><span>Acompañamiento para concursos</span><span class="n">05</span></li>
+          <li><span>Estudios de sitio</span><span class="n">06</span></li>
+          <li><span>Desarrollo de proyecto y anteproyecto</span><span class="n">07</span></li>
         </ul>
       </div>
       <div style="position:relative;">
@@ -1536,7 +1551,7 @@
       <p class="tag">Vanguardia técnica. Memoria espacial.</p>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="year"></span> SALEM Arch&amp;Viz — salem.ar</span>
+      <span>© 2020–<span id="year"></span> SALEM Arch&amp;Viz — salem.ar</span>
       <ul class="footer-links">
         <li><a href="https://www.instagram.com/salemrenderizados/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
         <li><a href="https://www.linkedin.com/company/salem-architecture-visualization/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
