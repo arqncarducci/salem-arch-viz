@@ -1061,6 +1061,17 @@
     background: transparent; border:none; border-bottom: 1px solid var(--line-strong);
     color: var(--cream); font-family: var(--body); font-size: 1rem; padding: 10px 2px;
     resize: vertical;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .field input:-webkit-autofill,
+  .field input:-webkit-autofill:hover, 
+  .field input:-webkit-autofill:focus, 
+  .field input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 1000px #0b0a09 inset !important;
+    -webkit-text-fill-color: var(--cream) !important;
+    caret-color: var(--cream);
+    transition: background-color 5000s ease-in-out 0s;
   }
   .field input:focus, .field textarea:focus{ outline:none; border-color: var(--bronze-lt); }
   .field input::placeholder, .field textarea::placeholder{ color: var(--cream-faint); opacity:0.6; }
@@ -1399,7 +1410,7 @@
           </div>
         </article>
 
-        <!-- MODELO 2: GEMELO DIGITAL & CONTROL DE OBRA (TWINMOTION / GESTIÓN DE INSTALACIONES) -->
+        <!-- MODELO 2: CONTROL DE OBRA (TWINMOTION / GESTIÓN DE INSTALACIONES) -->
         <article class="tour-card" id="tourModelInstalaciones">
           <div class="tour-media-frame">
             <video src="assets/alquimia-metodo.mp4" poster="assets/alquimia-metodo-poster.jpg" autoplay loop muted playsinline controls preload="metadata"></video>
@@ -1412,7 +1423,7 @@
                 <span class="tour-pill pill-neutral">PC / Tablet en Obra</span>
               </div>
               <div class="tour-header">
-                <h3>Gemelo Digital &amp; Control de Obra</h3>
+                <h3>Control de Obra</h3>
                 <span class="tour-mode-tag">Supervisión de Instalaciones &amp; Gestión por Capas en Tiempo Real</span>
               </div>
               <p class="tour-desc">
@@ -1420,10 +1431,10 @@
               </p>
               <div class="tour-specs">
                 <div class="spec-item">
-                  <strong>Control Minucioso de Ejecución:</strong> Inspección y cotejo interactivo de canalizaciones, montantes y elementos constructivos directamente frente a la obra física.
+                  <strong>Características:</strong> Caminata libre en primera persona, gestión y modulación de capas para ver u ocultar instalaciones y control minucioso de su ejecución.
                 </div>
                 <div class="spec-item">
-                  <strong>Coordinación Interdisciplinaria:</strong> Optimizado para directores de obra, proyectistas, contratistas y gremios para una toma de decisiones precisa en campo.
+                  <strong>Modalidad &amp; Dispositivo:</strong> Visualización <strong>online en la página oficial</strong> o entrega en formato <strong>APP ejecutable para usar sin conexión (offline)</strong>. Se recomienda utilizar en <strong>computadora (PC o laptop)</strong> para exposiciones o presentaciones profesionales. <em>(No compatible con VR)</em>.
                 </div>
               </div>
             </div>
@@ -1584,17 +1595,17 @@
       </div>
       <div style="position:relative;">
         <iframe name="contact_iframe" id="contact_iframe" style="display:none;" aria-hidden="true"></iframe>
-        <form class="contact-form" id="contactForm" target="contact_iframe" action="https://formsubmit.co/salem.archviz@gmail.com" method="POST" novalidate>
+        <form class="contact-form" id="contactForm" target="contact_iframe" action="https://formsubmit.co/salem.archviz@gmail.com" method="POST" autocomplete="on" novalidate>
           <input type="hidden" name="_subject" value="Nuevo contacto desde salem.ar">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
           <div class="field">
             <label for="name">Nombre</label>
-            <input id="name" name="Nombre" type="text" placeholder="¿Con quién tenemos el gusto de conversar?" required>
+            <input id="name" name="Nombre" type="text" autocomplete="name" placeholder="¿Con quién tenemos el gusto de conversar?" required>
           </div>
           <div class="field">
             <label for="email">Correo</label>
-            <input id="email" name="Correo" type="email" placeholder="tu@estudio.com" required>
+            <input id="email" name="Correo" type="email" autocomplete="email" inputmode="email" placeholder="tu@estudio.com" required>
           </div>
           <div class="field">
             <label for="message">Tu proyecto</label>
